@@ -1,0 +1,33 @@
+{
+  "name": "No more Twitter",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Every time you open twitter.com the addon will redirect to another web",
+  "homepage_url": "http://puravida-software.gitlab.io",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "options_page": "src/options_custom/index.html",
+  "permissions": [
+    "https://*/*"
+  ],  
+   "background": {
+      "page": "src/background.html",
+      "persistent": false
+   },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.twitter.com/*"
+      ],      
+      "run_at": "document_end",
+      "js": [
+        "src/util.js",
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}
